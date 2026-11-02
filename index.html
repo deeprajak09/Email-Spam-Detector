@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Spam Detector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class = "header-content">
+            <div class="logo">
+                <h1>Spam Check</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="input-section">
+            <h2>Analyze your Email</h2>
+            <p class="subtitle">Paste the email content below to check if it's spam:</p>
+            <div class="form-group">
+                <label for="senderEmail">Sender Email address</label>
+                <input type="email" id="senderEmail">
+            </div>
+            <div class="form-group">
+                <label for="subjectLine">Subject Line</label>
+                <input type="text" id="subjectLine">
+            </div>
+            <div class="form-group">
+                <label for="emailBody">Email Body</label>
+                <textarea id="emailBody" rows="8"></textarea>
+            </div>
+            <div class="button-group">
+                <button class="btn btn-analyze" onclick="analyzeEmail()">
+                    🔍 Analyze Email
+                </button>
+                <button class="btn btn-clear" onclick="clearAll()">
+                    🗑️ Clear All
+                </button>
+                <button class="btn btn-sample" onclick="loadSample()">
+                    📋 Load Sample Spam
+                </button>
+            </div>
+        </section>
+        <section class="result-section" id="resultSection" style="display: none;">
+            <h2>📊 Analysis Result</h2>
+
+            <!-- Score Circle -->
+            <div class="score-container">
+                <div class="score-circle" id="scoreCircle">
+                    <span class="score-value" id="scoreValue">0</span>
+                    <span class="score-label">/ 100</span>
+                </div>
+                <div class="verdict" id="verdict">
+                    <span class="verdict-icon" id="verdictIcon"></span>
+                    <span class="verdict-text" id="verdictText"></span>
+                </div>
+            </div>
+
+            <!-- Spam Meter -->
+            <div class="meter-container">
+                <label>Spam Probability</label>
+                <div class="meter-bar">
+                    <div class="meter-fill" id="meterFill"></div>
+                </div>
+                <span class="meter-percent" id="meterPercent">0%</span>
+            </div>
+
+            <!-- Detailed Findings -->
+            <div class="findings">
+                <h3>🔎 Detailed Findings</h3>
+                <div id="findingsList"></div>
+            </div>
+
+            <!-- Spam Keywords Found -->
+            <div class="keywords-found" id="keywordsSection" style="display: none;">
+                <h3>⚠️ Spam Keywords Detected</h3>
+                <div id="keywordsList"></div>
+            </div>
+
+            <!-- Recommendations -->
+            <div class="recommendations" id="recommendations">
+                <h3>💡 Recommendations</h3>
+                <ul id="recommendationsList"></ul>
+            </div>
+        </section>
+
+        <!-- -------- History Section -------- -->
+        <section class="history-section" id="historySection" style="display: none;">
+            <h2>📜 Analysis History</h2>
+            <div id="historyList"></div>
+            <button class="btn btn-clear-history" onclick="clearHistory()">
+                Clear History
+            </button>
+        </section>
+
+        <!-- -------- Stats Section -------- -->
+        <section class="stats-section">
+            <div class="stat-card">
+                <span class="stat-icon">📧</span>
+                <span class="stat-number" id="totalChecked">0</span>
+                <span class="stat-label">Emails Checked</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">🚫</span>
+                <span class="stat-number" id="totalSpam">0</span>
+                <span class="stat-label">Spam Detected</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">✅</span>
+                <span class="stat-number" id="totalClean">0</span>
+                <span class="stat-label">Clean Emails</span>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============ FOOTER ============ -->
+    <footer>
+        <p>🛡️ SpamGuard &copy; 2024 | Built with HTML, CSS & JavaScript</p>
+    </footer>
+
+    <script src="script.js"></script>
+    </div>
+</body>
+</html>
